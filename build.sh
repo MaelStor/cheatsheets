@@ -76,37 +76,9 @@ Click on one of the following thumbnails to download one of our cheatsheets.
 " > "$LINKS_OUT"
 fi
 
-COHORT="2019-Winter"
-IN="kickstart-backend"
-OUT="build/kickstart-backend"
-pandoc_build "1-html-css"
-pandoc_build "2-bash-git"
-pandoc_build "3-python"
-pandoc_build "4-modules-oop"
-pandoc_build "5-http"
-pandoc_build "6-django"
-pandoc_build "7-orm"
-pandoc_build "8-postgres"
-
-IN="kickstart-frontend"
-OUT="build/kickstart-frontend"
-pandoc_build "1-css"
-pandoc_build "2-javascript"
-pandoc_build "3-react"
-pandoc_build "4-components"
-pandoc_build "5-mern"
-pandoc_build "6-industry"
-pandoc_build "7-algorithms"
-
 IN="topical"
 OUT="build/topical"
 COHORT="Cheatsheet"
-pandoc_build "javascript-for-pythonistas"
-pandoc_build "python-for-js-developers"
-pandoc_build "python"
-pandoc_build "modern-html-css"
-pandoc_build "django"
-pandoc_build "cli-bash"
-pandoc_build "react-redux"
+# pandoc_build "python"
 
 exit 0
