@@ -50,7 +50,7 @@ function pandoc_build() {
   if [[ -z "$FILTER" ]]; then
     cat << EOF >> "$LINKS_OUT"
 ### $name
-[![$name PDF thumbnail](./${out_name}.thumb.jpg)](https://github.com/MaelStor/cheatsheets/raw/master/${out_name}.pdf)
+[![$name PDF thumbnail](./${out_name}.thumb.jpg)](https://raw.githubusercontent.com/MaelStor/cheatsheets/master/${out_name}.pdf)
 
 EOF
   fi
