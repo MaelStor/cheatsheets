@@ -18,7 +18,14 @@ function pandoc_build() {
   local name
   name="$1"
 
-  in_path="$IN/$name.md"
+  if [[ -f "$IN/$name.md" ]]; then
+    in_path="$IN/$name.md"
+  else
+    this=$(basename "$0")
+    printf "%s: File not found: %s" "$this" "${IN}/${name}"
+    return 1
+  fi
+
   out_name="${OUT}/${name}"
 
   #################################
@@ -38,7 +45,7 @@ function pandoc_build() {
     | grep -q "$pdf_engine_version"; then
     pdf_opt='--latex-engine=pdflatex'
   else
-    pdf_opt='--pdf-engine="pdflatex"'
+    pdf_opt='--pdf-engine=pdflatex'
   fi
 
   pandoc \
@@ -49,11 +56,11 @@ function pandoc_build() {
     --template "$TEMPLATE" \
     "$pdf_opt" \
     -o "${out_name}.pdf" \
-    --toc-depth 1
+    --toc-depth 1 || return 1
 
   if [[ -x "$(command -v convert)" ]]; then
-    convert "${out_name}.pdf" -background "#FFFFFF" -resize 350x -flatten "${out_name}.thumb.jpg"
-    convert -density 300 "${out_name}.pdf" -resize 50% -flatten "${out_name}.jpg"
+    convert "${out_name}.pdf" -background "#FFFFFF" -resize 350x -flatten "${out_name}.thumb.jpg" || return 1
+    convert -density 300 "${out_name}.pdf" -resize 50% -flatten "${out_name}.jpg" || return 1
   fi
 
   ## Handle creating the LINKS.md markdown file (only when building all)
@@ -91,6 +98,9 @@ fi
 IN="cheatsheets"
 OUT="build/cheatsheets"
 COHORT="Cheatsheet"
-pandoc_build "tmux"
+cheatsheets=(tmux)
+for cheatsheet in "${cheatsheets[@]}"; do
+  pandoc_build "$cheatsheet" || exit 1
+done
 
 exit 0
