@@ -98,7 +98,7 @@ fi
 IN="cheatsheets"
 OUT="build/cheatsheets"
 COHORT="Cheatsheet"
-cheatsheets=(tmux)
+cheatsheets=(tmux python)
 for cheatsheet in "${cheatsheets[@]}"; do
   pandoc_build "$cheatsheet" || exit 1
 done
