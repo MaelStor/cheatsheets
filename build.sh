@@ -36,7 +36,7 @@ function pandoc_build() {
   if pandoc --version | head -1 | sed -E 's/(pandoc) (.*)/\2/' \
     | paste -d'\n' - <(echo "$pdf_engine_version") | sort -V | tail -1 \
     | grep -q "$pdf_engine_version"; then
-    pdf_opt='--latex-engine pdflatex'
+    pdf_opt='--latex-engine=pdflatex'
   else
     pdf_opt='--pdf-engine="pdflatex"'
   fi
