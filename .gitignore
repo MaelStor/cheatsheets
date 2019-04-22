@@ -1,71 +1,24 @@
-### OSX ###
-.DS_Store
-.AppleDouble
-.LSOverride
 
-### SublimeText ###
-# cache files for sublime text
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
+# Created by https://www.gitignore.io/api/vim
+# Edit at https://www.gitignore.io/?templates=vim
 
-# workspace files are user-specific
-*.sublime-workspace
+### Vim ###
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
 
-# project files should be checked into the repository, unless a significant
-# proportion of contributors will probably not be using SublimeText
-# *.sublime-project
+# Session
+Session.vim
 
-# Basics
-*.py[cod]
-__pycache__
-
-# Logs
-logs
-*.log
-pip-log.txt
-npm-debug.log*
-
-# Unit test / coverage reports
-.coverage
-.tox
-htmlcov
-docs/htmlcov
-
-# Translations
-*.mo
-*.pot
-
-# Pycharm
-.idea/*
-
-
-# Vim
-
+# Temporary
+.netrwhist
 *~
-*.swp
-*.swo
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
 
-# npm
-node_modules/
-
-# Compass
-.sass-cache
-
-# env vars
-.env
-
-default.sqlite3.db
-
-
-staticfiles/
-
-.cache/
-
-tmp/
-
-# egg stuff
-omnic.egg-info/
-
-dist/
-# build/
+# End of https://www.gitignore.io/api/vim
