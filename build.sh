@@ -32,7 +32,7 @@ function pandoc_build() {
   # Provides the option of selecting only certain cheatsheets
   # If we specify a path instead of a search param, lets check for that too (used by entr)
   if [[ "$FILTER" ]] && [[ ! $name == "$FILTER" ]] && [[ ! "$FILTER" -ef "$in_path" ]]; then
-    return 1
+    return 0
   fi
 
   mkdir -p "$OUT"
