@@ -1,3 +1,5 @@
+https://travis-ci.com/MaelStor/cheatsheets.svg?branch=master
+
 # Kickstart Cheatsheets
 
 Forked from the Kickstart Cheatsheets repo on github  
