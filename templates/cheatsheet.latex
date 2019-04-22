@@ -114,7 +114,7 @@ $endif$
 \definecolor{shadecolor}{rgb}{1,0,0}
 
 % define where to look for graphics
-\graphicspath{
+\graphicspath{%
     {cheatsheets/images}
 }
 
@@ -159,7 +159,7 @@ $endif$
 
 \newmdenv[rightline=false,bottomline=false,topline=false,linewidth=3pt,linecolor=blockquote-border,skipabove=\parskip]{customblockquote}
 \renewenvironment{quote}{\begin{customblockquote}\list{}{\rightmargin=0em\leftmargin=0em}%
-\item\relax\color{blockquote-text}\ignorespaces}{\unskip\unskip\endlist\end{customblockquote}}
+\item\relax\color{blockquote-text}\ignorespaces\unskip\unskip\endlist\end{customblockquote}}
 
 
 %
@@ -169,7 +169,7 @@ $if(quiz)$
 \newcommand{\quizanswer}[1]{%
 $if(showanswers)$
 \begin{framed}
-\textbf{Answer:}~~~~~{#1}
+\textbf{Answer:~{#1}}
 \end{framed}
 $endif$
 }
@@ -186,7 +186,10 @@ $if(quiz)$
 $else$
 \title{$title$ - $subject$}
 $endif$
-\author{$for(author)$$author$$sep$, $endfor$ Kickstart Coding}
+\author{$for(author)$
+	$author$$sep$,
+	$endfor$
+}
 
 
 %
@@ -208,7 +211,7 @@ $endif$
 $if(headergfx)$
 \geometry{headheight = 0.25in}
 \lhead{\includegraphics[height=0.5in, keepaspectratio=true]{./templates/letterhead.pdf}}
-\rhead{ {\fontfamily{cmss}\selectfont {\large \uppercase{$title$}} } }
+\rhead{{\fontfamily{cmss}\selectfont {\large \uppercase{$title$}}}}
 $if(topic)$
 \lfoot{$topic$}
 $else$
@@ -284,7 +287,7 @@ $endif$
 \par
 \noindent
 
-{ \setstretch{1.4}
+{\setstretch{1.4}
 \vfill
 \noindent {\huge \textbf{\textsf{$title$}}}
 $if(subtitle)$
@@ -328,13 +331,16 @@ $if(beamer)$
 \tableofcontents[hideallsubsections]
 \end{frame}
 $else$
-{
 $if(colorlinks)$
-\hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$$endif$}
+\hypersetup{linkcolor=
+	$if(toccolor)$
+		$toccolor$
+	$else$
+		\color{blue}
+	$endif$}
 $endif$
 \setcounter{tocdepth}{$toc-depth$}
 \tableofcontents
-}
 $endif$
 $endif$
 $if(lot)$
