@@ -218,10 +218,10 @@ $else$
 \lfoot{$cohort$}
 $endif$
 
-\cfoot{kickstartcoding.com}
+\cfoot{https://gitlab.noiam.space/maelstor/cheatsheets}
 
 $if(credits)$
-\rfoot{A cheatsheet by Kickstart Coding}
+\rfoot{A cheatsheet by Mael Stor}
 $else$
 \rfoot{\thepage}
 $endif$
@@ -253,11 +253,11 @@ $endif$
 $endif$
 
 \rhead{$cohort$}
-\lfoot{$for(author)$$author$$sep$, $endfor$ Kickstart Coding}
+\lfoot{$for(author)$$author$$sep$, $endfor$}
 
 \cfoot{}
 $if(cheatsheet)$
-\rfoot{http://kickstartcoding.com/}
+\rfoot{https://gitlab.noiam.space/maelstor/cheatsheets}
 $else$
 \rfoot{\thepage}
 $endif$
@@ -296,7 +296,7 @@ $if(subtitle)$
 $endif$
 \vskip 2em
 \noindent
-{\Large \textsf{\MakeUppercase{$for(author)$$author$$sep$, $endfor$} Kickstart Coding}
+{\Large \textsf{\MakeUppercase{$for(author)$$author$$sep$$endfor$}}
 \vfill
 }
 
