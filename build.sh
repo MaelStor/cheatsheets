@@ -95,12 +95,10 @@ Click on one of the following thumbnails to download one of our cheatsheets.
 EOF
 fi
 
-IN="cheatsheets"
-OUT="build/cheatsheets"
-COHORT="Cheatsheet"
-cheatsheets=(tmux python)
-for cheatsheet in "${cheatsheets[@]}"; do
-  pandoc_build "$cheatsheet" || exit 1
+find . -type f -name 'build.conf' -printf '%p\n' | while read -r file; do
+  . "$file"
+  for sheet in "${SHEETS[@]}"; do
+    pandoc_build "$sheet" || exit 1
+  done
 done
-
 exit 0
