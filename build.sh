@@ -77,8 +77,8 @@ EOF
 
 if [[ "$FILTER" ]] && [[ $FILTER == "--watch" ]]; then
   if [[ "$FILTER_ARG" ]]; then
-    dir=$(dirname "$FILTER_ARG")
-    file=$(basename "$FILTER_ARG")
+    dir=$(dirname "$FILTER_ARG") \
+        && file=$(basename "$FILTER_ARG") || exit 1
     echo "Entering watch mode..."
     find "$dir" -name "${file}.md" | entr -p ./build.sh /_
     exit
@@ -87,12 +87,12 @@ fi
 
 ## Handle creating the LINKS.md markdown file (only when building all)
 if [[ -z "$FILTER" ]]; then
-  echo   "
+  cat << EOF > "$LINKS_OUT"
 # Cheatsheets
 
 Click on one of the following thumbnails to download one of our cheatsheets.
 
-" > "$LINKS_OUT"
+EOF
 fi
 
 IN="cheatsheets"
