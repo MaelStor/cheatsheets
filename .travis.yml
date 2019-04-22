@@ -2,15 +2,9 @@
 dist: xenial
 language: minimal
 
-addon:
-  apt:
-    packages:
-      - pandoc
-      - entr
-      - imagemagick
-    update: true
-
 script:
+  - sudo apt-get -y update
+  - sudo apt-get -y install pandoc entr imagemagick
   - pandoc --version
   - convert --version
   - ./build.sh

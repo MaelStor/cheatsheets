@@ -1,4 +1,4 @@
-https://travis-ci.com/MaelStor/cheatsheets.svg?branch=master
+[![Build Status](https://travis-ci.com/MaelStor/cheatsheets.svg?branch=master)](https://travis-ci.com/MaelStor/cheatsheets)
 
 # Kickstart Cheatsheets
 
