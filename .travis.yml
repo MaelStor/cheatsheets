@@ -5,6 +5,8 @@ language: minimal
 script:
   - sudo apt-get -y update
   - sudo apt-get -y install pandoc entr imagemagick
+  - sed -E 's/^(\s*)(<policy domain="coder" .*)$/\1<!-- \2 -->/' /etc/ImageMagick-6/policy.xml > ./policy.xml
+  - sudo cp -b ./policy.xml /etc/ImageMagick-6/policy.xml
   - pandoc --version
   - convert --version
   - ./build.sh

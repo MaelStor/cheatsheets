@@ -31,13 +31,23 @@ function pandoc_build() {
   mkdir -p "$OUT"
 
   echo "${name}  ->  ${out_name}.pdf"
+
+  pdf_engine_version="2.0.0" # this is the minimum version for --pdf-engine opt
+  if pandoc --version | head -1 | sed -E 's/(pandoc) (.*)/\2/' \
+    | paste -d'\n' - <(echo "$pdf_engine_version") | sort -V | tail -1 \
+    | grep -q "$pdf_engine_version"; then
+    pdf_opt='--latex-engine pdflatex'
+  else
+    pdf_opt='--pdf-engine="pdflatex"'
+  fi
+
   pandoc \
     -f markdown \
     "$in_path" \
     --variable=cohort:"$COHORT" \
     -t latex \
     --template "$TEMPLATE" \
-    --pdf-engine='pdflatex' \
+    "$pdf_opt" \
     -o "${out_name}.pdf" \
     --toc-depth 1
 
