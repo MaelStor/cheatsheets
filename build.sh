@@ -28,6 +28,8 @@ function pandoc_build() {
     return 1
   fi
 
+  mkdir -p "$OUT"
+
   echo "${name}  ->  ${out_name}.pdf"
   pandoc \
     -f markdown \
@@ -48,7 +50,7 @@ function pandoc_build() {
   if [[ -z "$FILTER" ]]; then
     cat << EOF >> "$LINKS_OUT"
 ### $name
-[![$name PDF thumbnail](./${out_name}.thumb.jpg)](https://github.com/kickstartcoding/cheatsheets/raw/master/${out_name}.pdf)
+[![$name PDF thumbnail](./${out_name}.thumb.jpg)](https://github.com/MaelStor/cheatsheets/raw/master/${out_name}.pdf)
 
 EOF
   fi
@@ -76,9 +78,9 @@ Click on one of the following thumbnails to download one of our cheatsheets.
 " > "$LINKS_OUT"
 fi
 
-IN="topical"
-OUT="build/topical"
+IN="cheatsheets"
+OUT="build/cheatsheets"
 COHORT="Cheatsheet"
-# pandoc_build "python"
+pandoc_build "tmux"
 
 exit 0
