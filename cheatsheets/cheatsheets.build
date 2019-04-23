@@ -1,0 +1,20 @@
+# Sourced by build.sh
+#
+# The build configuration file must end with .build
+# These variables overwrite the defaults and are optional
+#
+# Default is path to this build file 
+# IN="relative/path/to/cheatsheet/category" # (optional)
+#
+# # Default is build/relative-path-to-build.sh
+# OUT="relative/path/to/build/directory" # (optional)
+#
+# Following variables are mandatory
+# COHORT="Cheatsheet"
+#
+# An array of cheatsheets of which build.sh should
+# know about when invoked
+# SHEETS=(tmux python)
+
+COHORT="Cheatsheet"
+SHEETS=(tmux python python-strings-format)

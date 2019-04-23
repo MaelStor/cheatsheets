@@ -95,7 +95,10 @@ Click on one of the following thumbnails to download one of our cheatsheets.
 EOF
 fi
 
-find . -type f -name 'build.conf' -printf '%p\n' | while read -r file; do
+find . -type f -name '*.build' -printf '%p\n' | while read -r file; do
+  IN=$(dirname $(realpath --relative-to="$MY_PATH" "$file"))
+  OUT="build/${IN}"
+
   . "$file"
   for sheet in "${SHEETS[@]}"; do
     pandoc_build "$sheet" || exit 1
