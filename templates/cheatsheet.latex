@@ -81,7 +81,7 @@ $endif$
 
 \usepackage{longtable}  % required for tables!!
 \usepackage{booktabs}
-\usepackage{titlesec}
+\usepackage[explicit]{titlesec}
 \usepackage{multicol}
 
 % Ugh, for some reason my LaTeX distro doesnt include tightlist..?
@@ -96,8 +96,18 @@ $endif$
 
 % Configure top-level section to be slightly smaller and good for cheatsheets
 $if(cheatsheet)$
+\usepackage{xcolor}
+\definecolor{darkgreen}{HTML}{458A41}
+\definecolor{lightblue}{HTML}{789EA8}
+\definecolor{mint}{HTML}{71BDAE}
+% https://coolors.co
+\definecolor{asparagus}{HTML}{86a67a}
+
 \titleformat{\section}
-  {\fontsize{12}{14}\sc}{\thesection}{1em}{}
+{\fontsize{12}{14}\sc}
+{\thesection}
+{1em}
+{\colorbox{asparagus}{\makebox[\columnwidth][l]{#1}}}
 $endif$
 
 
